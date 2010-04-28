@@ -350,9 +350,9 @@ redis_commands = {
     zcard           = inline('ZCARD'), 
     zscore          = bulk('ZSCORE'), 
     zremrangebyscore = inline('ZREMRANGEBYSCORE'), 
-    zrank           = bulk('ZRANK')
-    zrevrank        = bulk('ZREVRANK')
-    zremrangebyrank = inline('ZREMRANGEBYRANK')
+    zrank           = bulk('ZRANK'),
+    zrevrank        = bulk('ZREVRANK'),
+    zremrangebyrank = inline('ZREMRANGEBYRANK'),
     
     -- commands operating on hashes
 
