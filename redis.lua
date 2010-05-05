@@ -268,7 +268,7 @@ redis_commands = {
     -- miscellaneous commands
     ping  = inline('PING', 
         function(response) 
-            if response == 'PONG' then return true else return false end
+            if response == 'PONG' then return 'PONG' end
         end
     ), 
     echo  = bulk('ECHO'),  
@@ -355,8 +355,23 @@ redis_commands = {
     zremrangebyrank = inline('ZREMRANGEBYRANK'),
     
     -- commands operating on hashes
-
-
+    hset            = bulk('HSET'),
+    hget            = bulk('HGET'),
+    hsetnx          = bulk('HSETNX' toboolean),
+    hmset           = bulk('HMSET'),
+    hincrby         = inline('HINCRBY'),
+    hexists         = inline('HEXISTS', toboolean), 
+    hdel            = inline('HDEL', toboolean),
+    hlen            = bulk('HLEN'),
+    hkeys           = inline('KEYS', 
+        function(response) 
+            local keys = {}
+            response:gsub('[^%s]+', function(key) 
+                table.insert(keys, key)
+            end)
+            return keys
+        end
+    ),
 
     -- multiple databases handling commands
     select         = inline('SELECT'), 
