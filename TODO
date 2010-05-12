@@ -1,0 +1,11 @@
+TODO
+
+- Merge in luajit2-compat branch
+- Add hashes
+- Add all ZSET commands
+- Add more tests
+- Some more error handling
+
+LONGER-TERM TODOS
+
+- Add an async version of the client
